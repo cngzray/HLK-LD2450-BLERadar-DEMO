@@ -10,7 +10,7 @@ ESP32 + HLK-LD2450 24G毫米波雷达 BLE 蓝牙透传 Demo
 <img width="800"  alt="image" src="https://github.com/user-attachments/assets/7a91e904-9493-491b-9589-794bd01258c3" />
 
 本Demo使用 **ESP32** 作为主控：
-1. 通过 **BLE蓝牙服务** LD2450 原始雷达帧；
+1. 通过 **BLE蓝牙服务** 接收 LD2450 原始雷达帧；
 2. 完成帧同步、校验、解析，提取最多3个目标的位置与速度；
 3. 内置简单目标有效性过滤；
 
