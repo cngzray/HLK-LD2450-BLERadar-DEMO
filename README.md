@@ -73,15 +73,8 @@ Payload内包含最多3个目标，每个目标8字节：
 
 ### 3. BLE 蓝牙通信逻辑
 - 创建BLE Service + Characteristic，开启Notify通知；
-- 手机BLE客户端连接ESP32后自动订阅特征值；
+- ESP32通过BLE连接雷达后自动订阅特征值；
 - 雷达每解析一帧有效目标，打包为二进制/JSON短包，通过Notify推送；
-- 支持多客户端连接（可限制单连接）；
-- 蓝牙断开自动重启广播，等待重连。
-
-### 4. 调试输出逻辑
-- Serial(USB串口，115200)打印：目标序号、X、Y、距离、速度；
-- 无目标时打印`No target detected`；
-- 帧错误、丢包、校验失败时打印警告日志，便于排查接线/波特率问题。
 
 ## 📡 BLE 通信协议
 BLE Service UUID / Characteristic UUID 在main.cpp宏定义内，可自行修改。
@@ -89,7 +82,6 @@ BLE Service UUID / Characteristic UUID 在main.cpp宏定义内，可自行修改
 ```
 target_count | t0_x | t0_y | t0_dist | t0_speed | t1_x | t1_y ...
 ```
-手机APP（nRF Connect、BLE调试助手）订阅Notify后实时接收雷达数据，可用于前端可视化绘制人体轨迹扇形图。
 
 ## ✨ 功能扩展建议
 1. **轨迹平滑滤波**：增加卡尔曼滤波/滑动平均，减少毫米波雷达点云闪烁；
